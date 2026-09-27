@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* =====================
+     الألوان الأساسية
+  ===================== */
+  --color-canvas: #FAF6F0;        /* خلفية الصفحة الرئيسية - عاجي فاخر */
+  --color-canvas-2: #F2ECE2;      /* خلفية ثانوية - بيج أعمق قليلاً */
+  --color-canvas-3: #E8DFD0;      /* خلفية ثالثة - بيج رملي */
+  --color-ink: #1C1815;           /* نص أساسي - أسود بني داكن */
+  --color-ink-soft: #3A332C;      /* نص ثانوي داكن */
+  --color-ink-muted: #6B6055;     /* نص وصفي - بني رمادي */
+  --color-gold: #A88551;          /* ذهبي فاخر */
+  --color-gold-light: #C9AE84;    /* ذهبي فاتح */
+  --color-gold-dark: #7A5F38;     /* ذهبي داكن */
+  --color-noir: #131009;          /* أسود عميق للأقسام الفخمة */
+
+  /* =====================
+     الخطوط
+  ===================== */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body-arabic), var(--font-body);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body-arabic), var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-arabic), var(--font-display), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "liga", "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* تدرج ذهبي للنصوص الكبيرة */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4B98C 0%, #A88551 50%, #7A5F38 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* خط علوي رقيق */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+
+  /* Label صغير فخم */
+  .label-luxe {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    font-weight: 500;
+  }
+
+  /* خط عربي/لاتيني مقروء للجسم */
+  .text-editorial {
+    line-height: 2;
+    letter-spacing: 0.01em;
+  }
 }

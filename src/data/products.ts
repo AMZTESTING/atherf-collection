@@ -1,0 +1,46 @@
+import type { Product } from "@/types";
+
+export const products: Product[] = [
+  {
+    id: "1",
+    slug: "azure",
+    name: "AZURE",
+    nameAr: "أزور",
+    tagline: "كريمي – ناعم – منعش – حلو",
+    description:
+      "عطر أنيق وجذاب يبدأ بانتعاش البرغموت، يتوسطه المسك البودري بلمسة ناعمة من جوز الهند، ويستقر على قاعدة دافئة من حبوب التونكا، ليترك أثرًا ناعمًا ودافئًا يدوم.",
+    notes: ["البرغموت", "المسك البودري", "جوز الهند", "حبوب التونكا"],
+    price: 129,
+    images: [],
+    category: "نيش",
+    collection: "Azure Line",
+    sizes: ["100ml"],
+    rating: 4.8,
+    reviewsCount: 45,
+    inStock: true,
+    featured: true,
+    bestSeller: true,
+    isNew: true,
+  },
+  {
+    id: "2",
+    slug: "velours",
+    name: "VELOURS",
+    nameAr: "ڤيلورز",
+    tagline: "شرقي – خشبي – عود – دافئ",
+    description:
+      "عطر شرقي فاخر يبدأ بلمسة دافئة من الزعفران والبرغموت، يتوسطه الورد وخشب الصندل، ويستقر على قاعدة غنية من العود والعنبر والمسك، ليترك أثرًا أنيقًا وعميقًا يدوم.",
+    notes: ["الزعفران", "البرغموت", "الورد", "خشب الصندل", "العود", "العنبر", "المسك"],
+    price: 129,
+    images: [],
+    category: "عود",
+    collection: "Velours Line",
+    sizes: ["100ml"],
+    rating: 4.9,
+    reviewsCount: 32,
+    inStock: true,
+    featured: true,
+    bestSeller: false,
+    isNew: true,
+  },
+];

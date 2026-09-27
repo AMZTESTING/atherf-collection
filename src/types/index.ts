@@ -1,0 +1,21 @@
+export type Product = {
+  id: string;
+  slug: string;
+  name: string;
+  nameAr: string;
+  tagline: string;
+  description: string;
+  notes: string[];
+  price: number;
+  compareAtPrice?: number;
+  images: string[];
+  category: "رجالي" | "نسائي" | "عود" | "نيش";
+  collection: string;
+  sizes: string[];
+  rating: number;
+  reviewsCount: number;
+  inStock: boolean;
+  featured?: boolean;
+  bestSeller?: boolean;
+  isNew?: boolean;
+};
