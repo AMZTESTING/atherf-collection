@@ -36,7 +36,8 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   title: "Ather Collection | عطور فاخرة",
-  description: "متجر Ather للعطور الفاخرة والعود والمسك.",
+  description:
+    "متجر Ather للعطور الفاخرة والعود والمسك. عطور مصممة لتترك أثراً يبقى.",
 };
 
 export default function RootLayout({
