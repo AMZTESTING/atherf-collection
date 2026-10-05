@@ -18,6 +18,7 @@ import {
   Settings,
   Menu,
   X,
+  Tag,
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -73,6 +74,7 @@ export default function AdminLayout({
     { href: "/admin/customers", label: "العملاء", icon: Users },
     { href: "/admin/products", label: "المنتجات", icon: Package },
     { href: "/admin/products/new", label: "إضافة منتج", icon: Plus },
+    { href: "/admin/offer", label: "العرض الترويجي", icon: Tag },
     { href: "/admin/logo", label: "اللوقو", icon: ImageIcon },
     { href: "/admin/story", label: "قسم قصتنا", icon: BookOpen },
     { href: "/admin/testimonials", label: "آراء العملاء", icon: MessageSquare },
@@ -143,12 +145,10 @@ export default function AdminLayout({
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#F5EFE6] flex">
-      {/* Sidebar للشاشات الكبيرة */}
       <aside className="hidden lg:flex w-64 bg-[#1C1815] text-white flex-col fixed h-full z-30">
         <SidebarContent />
       </aside>
 
-      {/* Sidebar منزلق للجوال */}
       <div
         className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ${
           sidebarOpen ? "visible" : "invisible"
@@ -169,7 +169,6 @@ export default function AdminLayout({
         </aside>
       </div>
 
-      {/* المحتوى الرئيسي */}
       <div className="flex-1 lg:mr-64 flex flex-col min-w-0">
         <header className="lg:hidden sticky top-0 z-40 flex items-center justify-between gap-3 bg-[#1C1815] text-white px-4 py-3 shadow-lg">
           <button
@@ -178,9 +177,11 @@ export default function AdminLayout({
           >
             <Menu className="h-5 w-5" />
           </button>
+
           <h1 className="font-serif text-lg tracking-[0.3em] text-white">
             ATHER
           </h1>
+
           <Link
             href="/"
             className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-white/5 transition text-xs"

@@ -8,6 +8,7 @@ import {
   type Testimonial,
   type StoryContent,
   type FooterContent,
+  type OfferBanner,
 } from "@/data/siteContent";
 
 type SiteContentContextType = {
@@ -15,11 +16,9 @@ type SiteContentContextType = {
   updateLogo: (logo: string) => Promise<void>;
   updateStory: (story: Partial<StoryContent>) => Promise<void>;
   updateFooter: (footer: Partial<FooterContent>) => Promise<void>;
+  updateOfferBanner: (banner: Partial<OfferBanner>) => Promise<void>;
   addTestimonial: (t: Omit<Testimonial, "id">) => Promise<void>;
-  updateTestimonial: (
-    id: string,
-    t: Partial<Testimonial>
-  ) => Promise<void>;
+  updateTestimonial: (id: string, t: Partial<Testimonial>) => Promise<void>;
   deleteTestimonial: (id: string) => Promise<void>;
   resetToDefaults: () => Promise<void>;
   refreshContent: () => Promise<void>;
@@ -59,6 +58,10 @@ export function SiteContentProvider({
               ...((data.footer?.social as any) || {}),
             },
           },
+          offerBanner: {
+            ...defaultSiteContent.offerBanner,
+            ...(data.offer_banner || {}),
+          },
         });
       }
     } catch (e) {
@@ -73,16 +76,15 @@ export function SiteContentProvider({
   }, []);
 
   const saveToDB = async (newContent: SiteContent) => {
-    const { error } = await supabase
-      .from("site_content")
-      .upsert({
-        id: 1,
-        logo: newContent.logo,
-        story: newContent.story,
-        testimonials: newContent.testimonials,
-        footer: newContent.footer,
-        updated_at: new Date().toISOString(),
-      });
+    const { error } = await supabase.from("site_content").upsert({
+      id: 1,
+      logo: newContent.logo,
+      story: newContent.story,
+      testimonials: newContent.testimonials,
+      footer: newContent.footer,
+      offer_banner: newContent.offerBanner,
+      updated_at: new Date().toISOString(),
+    });
 
     if (error) console.error("Save content failed:", error);
   };
@@ -112,6 +114,15 @@ export function SiteContentProvider({
           ? { ...content.footer.social, ...footerUpdates.social }
           : content.footer.social,
       },
+    };
+    setContent(updated);
+    await saveToDB(updated);
+  };
+
+  const updateOfferBanner = async (bannerUpdates: Partial<OfferBanner>) => {
+    const updated = {
+      ...content,
+      offerBanner: { ...content.offerBanner, ...bannerUpdates },
     };
     setContent(updated);
     await saveToDB(updated);
@@ -164,6 +175,7 @@ export function SiteContentProvider({
         updateLogo,
         updateStory,
         updateFooter,
+        updateOfferBanner,
         addTestimonial,
         updateTestimonial,
         deleteTestimonial,

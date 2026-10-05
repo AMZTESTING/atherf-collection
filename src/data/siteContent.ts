@@ -42,11 +42,22 @@ export type FooterContent = {
   taglineBrand: string;
 };
 
+export type OfferBanner = {
+  enabled: boolean;
+  badge: string;
+  title: string;
+  price: string;
+  oldPrice: string;
+  discountText: string;
+  ctaText: string;
+};
+
 export type SiteContent = {
   logo: string;
   story: StoryContent;
   testimonials: Testimonial[];
   footer: FooterContent;
+  offerBanner: OfferBanner;
 };
 
 export const defaultSiteContent: SiteContent = {
@@ -90,7 +101,7 @@ export const defaultSiteContent: SiteContent = {
   footer: {
     brandName: "ATHER",
     description:
-      "عطور فاخرة مصممة لمن يقدر التفاصيل. عود، مسك، وعنبر من أرقى المصادر.",
+      "عطور فاخرة مصمم لمن يقدر التفاصيل. عود، مسك، وعنبر من أرقى المصادر.",
     social: {
       instagram: "https://instagram.com/atherr.co",
       tiktok: "https://tiktok.com/@ather.co",
@@ -117,5 +128,14 @@ export const defaultSiteContent: SiteContent = {
     copyright: "© 2026 Ather Collection. جميع الحقوق محفوظة.",
     tagline: "صُنع بشغف في الإمارات ·",
     taglineBrand: "ATHER",
+  },
+  offerBanner: {
+    enabled: true,
+    badge: "عرض خاص",
+    title: "العطران معاً بسعر مميز",
+    price: "229 د.إ",
+    oldPrice: "258 د.إ",
+    discountText: "وفّر 11%",
+    ctaText: "اطلب العرض",
   },
 };
